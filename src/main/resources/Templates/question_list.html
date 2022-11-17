@@ -20,8 +20,15 @@
         </tbody>
     </table>
     <!--    페이징처리 시작-->
+
     <div th:if="${!paging.isEmpty()}">
         <ul class="pagination justify-content-center">
+            <li class="page-item" th:classappend="${!paging.hasPrevious} ? 'disabled'">
+                <a class="page-link"
+                   th:href="@{/question/list}">
+                    <span>맨앞</span>
+                </a>
+            </li>
             <li class="page-item" th:classappend="${!paging.hasPrevious} ? 'disabled'">
                 <a class="page-link"
                    th:href="@{|?page=${paging.number-1}|}">
@@ -35,10 +42,16 @@
                 <a th:text="${page}" class="page-link" th:href="@{|?page=${page}|}"></a>
             </li>
             <li class="page-item" th:classappend="${!paging.hasNext} ? 'disabled'">
-                <a class="page-link" th:href="@{|?page=${paging.number+1}|}" href="">
+                <a class="page-link" th:href="@{|?page=${paging.number+1}|}" >
                     <span>다음</span>
                 </a>
             </li>
+            <li class="page-item" th:classappend="${!paging.hasNext} ? 'disabled'">
+                <a class="page-link" th:href="@{|?page=${paging.totalPages-1}|}" >
+                    <span>맨끝</span>
+                </a>
+            </li>
+
         </ul>
     </div>
     <!--    페이징처리 끝-->
