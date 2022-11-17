@@ -25,7 +25,7 @@
         <ul class="pagination justify-content-center">
             <li class="page-item" th:classappend="${!paging.hasPrevious} ? 'disabled'">
                 <a class="page-link"
-                   th:href="@{/question/list}">
+                   th:href="@{|?page=0|}">
                     <span>맨앞</span>
                 </a>
             </li>
