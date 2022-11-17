@@ -1,6 +1,8 @@
 package com.mysite.sbb.question.dao;
 
 import com.mysite.sbb.question.Question;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -21,4 +23,6 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
     Optional<Question> findBySubjectLike(String subject);
 
     List<Question> findAllBySubjectLike(String subject);
+
+    Page<Question> findAll(Pageable pageable);
 }

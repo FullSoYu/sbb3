@@ -3,6 +3,7 @@ package com.mysite.sbb;
 import com.mysite.sbb.Answer.Answer;
 import com.mysite.sbb.Answer.dao.AnswerRepository;
 import com.mysite.sbb.question.Question;
+import com.mysite.sbb.question.QuestionService;
 import com.mysite.sbb.question.dao.QuestionRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ class SbbApplicationTests {
 
     @Autowired
     private QuestionRepository questionRepository;
+
+    @Autowired
+    private QuestionService questionService;
 
     @Autowired
     private AnswerRepository answerRepository;
@@ -223,6 +227,16 @@ class SbbApplicationTests {
         System.out.println("답변 테이블에");
     }
 
+    @Test
+    void createJPA(){
+        for(int i = 1; i <= 300l; i++) {
+            String subject = String.format("테스트 데이터 입니다.:[%03d]", i);
+
+            String content = "내용무";
+
+            questionService.create(subject,content);
+        }
+    }
 
 
 }
